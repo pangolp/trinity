@@ -52,6 +52,13 @@ public:
             { "",   rbac::RBAC_PERM_COMMAND_LOOKUP_SPELL,    true, &HandleLookupSpellCommand,           "" },
         };
 
+		static std::vector<ChatCommand> lookupQuestCommandTable =
+		{
+			{ "id",   rbac::RBAC_PERM_COMMAND_LOOKUP_QUEST,    true, &HandleLookupQuestIdCommand,  "" },
+			{ "", 	  rbac::RBAC_PERM_COMMAND_LOOKUP_QUEST,	   true, &HandleLookupQuestCommand,    "" },
+
+		};
+
         static std::vector<ChatCommand> lookupCommandTable =
         {
             { "area",     rbac::RBAC_PERM_COMMAND_LOOKUP_AREA,     true, &HandleLookupAreaCommand,     "" },
@@ -61,7 +68,7 @@ public:
             { "item",     rbac::RBAC_PERM_COMMAND_LOOKUP_ITEM,     true, &HandleLookupItemCommand,     "" },
             { "itemset",  rbac::RBAC_PERM_COMMAND_LOOKUP_ITEMSET,  true, &HandleLookupItemSetCommand,  "" },
             { "object",   rbac::RBAC_PERM_COMMAND_LOOKUP_OBJECT,   true, &HandleLookupObjectCommand,   "" },
-            { "quest",    rbac::RBAC_PERM_COMMAND_LOOKUP_QUEST,    true, &HandleLookupQuestCommand,    "" },
+            { "quest",    rbac::RBAC_PERM_COMMAND_LOOKUP_QUEST,    true, NULL,						   "", lookupQuestCommandTable },
             { "player",   rbac::RBAC_PERM_COMMAND_LOOKUP_PLAYER,   true, NULL,                         "", lookupPlayerCommandTable },
             { "skill",    rbac::RBAC_PERM_COMMAND_LOOKUP_SKILL,    true, &HandleLookupSkillCommand,    "" },
             { "spell",    rbac::RBAC_PERM_COMMAND_LOOKUP_SPELL,    true, NULL,                         "", lookupSpellCommandTable },
@@ -747,6 +754,62 @@ public:
 
         return true;
     }
+
+    static bool HandleLookupQuestIdCommand(ChatHandler* handler, char const* args) {
+		
+		if (!*args)
+			return false;
+
+		bool found = false;
+
+		Player* target = handler->getSelectedPlayerOrSelf();
+				
+		uint32 id = atoi((char*)args);
+
+		if (Quest const* quest = sObjectMgr->GetQuestTemplate(id))
+		{
+
+			std::string title = quest->GetTitle();
+			if (title.empty())
+				return false;
+
+			char const* statusStr = "";
+
+			if (target)
+			{
+				QuestStatus status = target->GetQuestStatus(quest->GetQuestId());
+
+				switch (status)
+				{
+				case QUEST_STATUS_COMPLETE:
+					statusStr = handler->GetTrinityString(LANG_COMMAND_QUEST_COMPLETE);
+					break;
+				case QUEST_STATUS_INCOMPLETE:
+					statusStr = handler->GetTrinityString(LANG_COMMAND_QUEST_ACTIVE);
+					break;
+				case QUEST_STATUS_REWARDED:
+					statusStr = handler->GetTrinityString(LANG_COMMAND_QUEST_REWARDED);
+					break;
+				default:
+					break;
+				}
+			}
+
+			if (handler->GetSession())
+				handler->PSendSysMessage(LANG_QUEST_LIST_CHAT, quest->GetQuestId(), quest->GetQuestId(), quest->GetQuestLevel(), title.c_str(), statusStr);
+			else
+				handler->PSendSysMessage(LANG_QUEST_LIST_CONSOLE, quest->GetQuestId(), title.c_str(), statusStr);
+			found = true;
+		}
+
+
+		if (!found) {
+			handler->SendSysMessage(LANG_COMMAND_NOQUESTFOUND);
+		}
+			
+			
+		return true;
+	}
 
     static bool HandleLookupSkillCommand(ChatHandler* handler, char const* args)
     {
