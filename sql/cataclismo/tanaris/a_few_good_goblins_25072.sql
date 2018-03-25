@@ -4,6 +4,8 @@ SET @SPELL_SUMMON:=73441; -- Summon Captured Bughunter
 
 UPDATE `creature_template` SET `AIName`='SmartAI', `ScriptName`='' WHERE `entry` IN (@HAZZALI, @GOBLIN);
 
+UPDATE `creature` SET `modelid`=0 WHERE `id` IN (@HAZZALI);
+
 DELETE FROM `smart_scripts` WHERE `entryorguid` IN (@HAZZALI, @GOBLIN) AND `source_type` IN (0);
 
 INSERT INTO smart_scripts (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,
@@ -38,7 +40,7 @@ INSERT INTO `locales_creature_text` (`entry`,`groupid`,`id`,`text_loc1`,`text_lo
 -- Criaturas que no deberían estar, porque son sumoneadas por el spell.
 DELETE FROM `creature` WHERE `id` IN (@GOBLIN);
 -- Alguna trampas superpuestas
-DELETE FROM `creature` WHERE `guid` IN (73039, 104465, 72860, 87233, 104940, 73658, 104737) AND `id` IN (@HAZZALI);
+DELETE FROM `creature` WHERE `guid` IN (73039, 104465, 72860, 87233, 104940, 73658, 104737, 73871, 104554) AND `id` IN (@HAZZALI);
 
 /*
 guid	id	map	zone	area	spawnMask	phaseMask	modelid	equipment_id	position_x	position_y	position_z	orientation	spawntimesecs	spawndist	currentwaypoint	curhealth	curmana	MovementType	npcflag	unit_flags	dynamicflags
@@ -63,4 +65,6 @@ guid	id	map	zone	area	spawnMask	phaseMask	modelid	equipment_id	position_x	positi
 104465	39081	1	0	0	1	1	16213	0	-9041.7	-3818.7	15.1254	0	90	0	0	185	0	0	0	0	0
 104737	39081	1	0	0	1	1	16213	0	-8845.88	-4047.04	14.3381	0	90	0	0	185	0	0	0	0	0
 104940	39081	1	0	0	1	1	16213	0	-8915.6	-4039.14	13.612	0	90	0	0	185	0	0	0	0	0
+73871	39081	1	0	0	1	1	16213	0	-8941.02	-3723.5	13.8703	0	90	0	0	185	0	0	0	0	0
+104554	39081	1	0	0	1	1	16213	0	-8820.79	-4009.38	12.7893	0	90	0	0	185	0	0	0	0	0
 */
