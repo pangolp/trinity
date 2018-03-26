@@ -1,3 +1,6 @@
+-- A Few Good Goblins (25072)
+-- By Fearz & Stevej
+
 SET @HAZZALI:=39081; -- Hazzali Cocoon
 SET @GOBLIN:=39082; -- Captured Goblin Bughunter
 SET @SPELL_SUMMON:=73441; -- Summon Captured Bughunter
@@ -8,7 +11,7 @@ UPDATE `creature` SET `modelid`=0 WHERE `id` IN (@HAZZALI);
 
 DELETE FROM `smart_scripts` WHERE `entryorguid` IN (@HAZZALI, @GOBLIN) AND `source_type` IN (0);
 
-INSERT INTO smart_scripts (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,
 `event_param1`,`event_param2`,`event_param3`,`event_param4`,`action_type`,`action_param1`,`action_param2`,`action_param3`,
 `action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,
 `target_y`,`target_z`,`target_o`,`comment`) VALUES
