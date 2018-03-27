@@ -6,6 +6,16 @@ SET @LABORER:=47292; -- Slacking laborer
 SET @Spell:=88236; -- Refurbished trooper uniform
 SET @GOSSIP:=12238;
 SET @CREDIT:=88241; -- Spell Kill Credit
+SET @SPELL_UNIFORM:=88236; -- -- Refurbished Trooper Uniform
+SET @UNIFORM:=88210;
+
+DELETE FROM `spell_linked_spell` WHERE `spell_trigger` IN (@SPELL_UNIFORM, -@SPELL_UNIFORM) AND `type` IN (2);
+
+INSERT INTO `spell_linked_spell` (`spell_trigger`, `spell_effect`, `type`, `req_aura`, `comment`) VALUES
+(@SPELL_UNIFORM,@UNIFORM,2,0,"When spell_trigger is cast - spell_effect is also cast.");
+
+-- no deberia pedir eso.
+UPDATE `quest_template` SET `RequiredSpellCast1`=0/*87996*/ WHERE `id` IN (@QUEST);
 
 UPDATE `creature_template` SET `exp`=3, `faction_A`=2348, `faction_H`=2348, `mingold`=0, 
 `maxgold`=0, `health_mod`=1 WHERE `entry` IN (47291, @LABORER);
@@ -37,10 +47,12 @@ INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type
 (@LABORER,0,0,0,4,0,100,0,0,0,0,0,11,14890,0,0,0,0,0,2,0,0,0,0,0,0,0,"AGGRO - CAST 14890 - VICTIM"),
 (@LABORER,0,1,2,62,0,100,0,@GOSSIP,0,0,0,72,0,0,0,0,0,0,7,0,0,0,0,0,0,0,"GOSSIP SELECT - CLOSE GOSSIP - ACTION INVOKER"),
 (@LABORER,0,2,0,61,0,100,0,0,0,0,0,88,@LABORER*100+0,@LABORER*100+1,0,0,0,0,1,0,0,0,0,0,0,0,"LINK - CALL RANDOM RANGE TIMED ACTIONLIST - SELF"),
--- LISTA 1
+-- LISTA 0
 (@LABORER*100+0,9,0,0,0,0,100,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,"EVENT NONE - TALK - SELF"),
-(@LABORER*100+0,9,1,0,0,0,100,0,0,0,0,0,85,@CREDIT,2,0,0,0,0,0,0,0,0,0,0,0,0,"EVENT NONE - CAST - NONE"),
--- LISTA 2
+(@LABORER*100+0,9,1,0,0,0,100,0,0,0,0,0,11,88241,2,0,0,0,0,7,0,0,0,0,0,0,0,"EVENT NONE - CALL KILLEDMONSTER"), -- 88241 -> 47127
+(@LABORER*100+0,9,2,0,0,0,100,0,0,0,0,0,83,1,0,0,0,0,0,1,0,0,0,0,0,0,0,"EVENT NONE - REMOVE NPC FLAG - SELF"),
+(@LABORER*100+0,9,3,0,0,0,100,0,0,0,0,0,41,5000,0,0,0,0,0,1,0,0,0,0,0,0,0,"EVENT NONE - FORCE DESPAWN 5s - SELF"),
+-- LISTA 1
 (@LABORER*100+1,9,0,0,0,0,100,0,0,0,0,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,"EVENT NONE - TALK - SELF"),
 (@LABORER*100+1,9,1,0,0,0,100,0,0,0,0,0,2,14,0,0,0,0,0,1,0,0,0,0,0,0,0,"EVENT NONE - SET FACTION - SELF"),
 (@LABORER*100+1,9,2,0,0,0,100,0,0,0,0,0,49,0,0,0,0,0,0,7,0,0,0,0,0,0,0,"EVENT NONE - ATTACK START - ACTION INVOKER");
