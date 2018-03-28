@@ -19,6 +19,15 @@ INSERT INTO `creature_text` (`entry`,`groupid`,`id`,`text`,`type`,`language`,`pr
 (@MAZOGA,2,0,"Joke's on you, mon. I found Jang'thraze long ago. Had both of de halves...'til some wily one come and steal one away in de night.",12,0,100,0,0,0,""),
 (@MAZOGA,3,0,"Now dat Sang'thraze is mine again, de only thing ya be findin' here...is ya own fresh grave.",12,0,100,0,0,0,"");
 
+DELETE FROM `locales_creature_text` WHERE `entry` IN (@MAZOGA) AND `groupid` BETWEEN 0 AND 3;
+
+INSERT INTO `locales_creature_text` (`entry`,`groupid`,`id`,`text_loc1`,`text_loc2`,`text_loc3`,`text_loc4`,
+`text_loc5`,`text_loc6`,`text_loc7`,`text_loc8`) VALUES
+(@MAZOGA,0,0,"","","","","","¡Mirad! ¡Sul'thraze the Lasher se reincorporará!","¡Mirad! ¡Sul'thraze the Lasher se reincorporará!",""),
+(@MAZOGA,1,0,"","","","","","Basta de disculpas ... El Jefe Sandscalp no puede recompensarme si estoy muerto, ¿eh? Adiós, mon ... para siempre.","Basta de disculpas ... El Jefe Sandscalp no puede recompensarme si estoy muerto, ¿eh? Adiós, mon ... para siempre.",""),
+(@MAZOGA,2,0,"","","","","","Joke está en ti, mon. Encontré a Jang'thraze hace mucho tiempo. Los dos se habían desmoronado ... hasta que algunos astutos vinieron y robaron uno en la noche.","Joke está en ti, mon. Encontré a Jang'thraze hace mucho tiempo. Los dos se habían desmoronado ... hasta que algunos astutos vinieron y robaron uno en la noche.",""),
+(@MAZOGA,3,0,"","","","","","Ahora, Sang'thraze es mío otra vez, de lo único que puedes encontrar aquí ... es tu propia tumba fresca.","Ahora, Sang'thraze es mío otra vez, de lo único que puedes encontrar aquí ... es tu propia tumba fresca.","");
+
 DELETE FROM `smart_scripts` WHERE `entryorguid` IN (@MAZOGA) AND `source_type` IN (0);
 DELETE FROM `smart_scripts` WHERE `entryorguid` IN (@JANGTHRAZE) AND `source_type` IN (1);
 
@@ -29,15 +38,18 @@ INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type
 -- Object Jang'thraze the Protector
 (@JANGTHRAZE,1,0,0,64,0,100,1,0,0,0,0,12,@MAZOGA,8,0,0,0,0,8,0,0,0,-7435.89,-2880.44,8.79,3.28,"GOSSIP HELLO - SUMMON CREATURE - POSITION"),
 -- Mazoga
-(@MAZOGA,0,0,1,63,0,100,0,0,0,0,0,18,768,0,0,0,0,0,1,0,0,0,0,0,0,0,"JUST CREATED - SET UNIT FLAG - SELF"),
-(@MAZOGA,0,1,0,61,0,100,0,0,0,0,0,1,2,6000,0,0,0,0,1,0,0,0,0,0,0,0,"LINK - TALK - SELF"),
-(@MAZOGA,0,2,0,52,0,100,0,2,0,0,0,1,3,6000,0,0,0,0,1,0,0,0,0,0,0,0,"TEXT OVER - TALK - SELF"),
-(@MAZOGA,0,3,0,52,0,100,0,3,0,0,0,1,0,6000,0,0,0,0,1,0,0,0,0,0,0,0,"TEXT OVER - TALK - SELF"),
-(@MAZOGA,0,4,5,52,0,100,0,0,0,0,0,19,768,0,0,0,0,0,1,0,0,0,0,0,0,0,"TEXT OVER - REMOVE UNIT FLAG - SELF"),
-(@MAZOGA,0,5,0,61,0,100,0,0,0,0,0,49,0,0,0,0,0,0,18,5,0,0,0,0,0,0,"LINK - ATTACK START - PLAYER DISTANCE"),
-(@MAZOGA,0,6,7,2,0,100,0,0,10,0,0,18,768,0,0,0,0,0,1,0,0,0,0,0,0,0,"HEALT PCT - SET UNIT FLAG - SELF"),
-(@MAZOGA,0,7,8,61,0,100,0,0,0,0,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,"LINK - TALK - SELF"),
-(@MAZOGA,0,8,0,61,0,100,0,0,0,0,0,33,@CREDIT,0,0,0,0,0,18,5,0,0,0,0,0,0,"LINK - CALL KILLEDMONSTER - PLAYER DISTANCE");
+(@MAZOGA,0,0,1,63,0,100,0,0,0,0,0,42,10,10,0,0,0,0,1,0,0,0,0,0,0,0,"JUST CREATED - SET INVINCIBILITY HP LEVEL - SELF"),
+(@MAZOGA,0,1,2,61,0,100,0,0,0,0,0,18,768,0,0,0,0,0,1,0,0,0,0,0,0,0,"LINK - SET UNIT FLAG - SELF"),
+(@MAZOGA,0,2,0,61,0,100,0,0,0,0,0,1,2,6000,0,0,0,0,1,0,0,0,0,0,0,0,"LINK - TALK - SELF"),
+(@MAZOGA,0,3,0,52,0,100,0,2,0,0,0,1,3,6000,0,0,0,0,1,0,0,0,0,0,0,0,"TEXT OVER - TALK - SELF"),
+(@MAZOGA,0,4,0,52,0,100,0,3,0,0,0,1,0,6000,0,0,0,0,1,0,0,0,0,0,0,0,"TEXT OVER - TALK - SELF"),
+(@MAZOGA,0,5,6,52,0,100,0,0,0,0,0,19,768,0,0,0,0,0,1,0,0,0,0,0,0,0,"TEXT OVER - REMOVE UNIT FLAG - SELF"),
+(@MAZOGA,0,6,0,61,0,100,0,0,0,0,0,49,0,0,0,0,0,0,18,20,0,0,0,0,0,0,"LINK - ATTACK START - PLAYER DISTANCE"),
+(@MAZOGA,0,7,8,2,0,100,0,0,10,0,0,18,768,0,0,0,0,0,1,0,0,0,0,0,0,0,"HEALT PCT - SET UNIT FLAG - SELF"),
+(@MAZOGA,0,8,9,61,0,100,0,0,10,0,0,2,35,0,0,0,0,0,1,0,0,0,0,0,0,0,"LINK - SET FACTION - SELF"),
+(@MAZOGA,0,9,10,61,0,100,0,0,0,0,0,1,1,8000,0,0,0,0,1,0,0,0,0,0,0,0,"LINK - TALK - SELF"),
+(@MAZOGA,0,10,0,61,0,100,0,0,0,0,0,33,@CREDIT,0,0,0,0,0,18,10,0,0,0,0,0,0,"LINK - CALL KILLEDMONSTER - PLAYER DISTANCE"),
+(@MAZOGA,0,11,0,52,0,100,0,1,0,0,0,41,0,0,0,0,0,0,1,0,0,0,0,0,0,0,"TEXT OVER - FORCE DESPAWN - SELF");
 
 DELETE FROM `creature` WHERE `id` IN (@MAZOGA);
 
