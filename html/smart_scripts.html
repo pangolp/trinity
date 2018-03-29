@@ -1251,6 +1251,321 @@
               </tr>
             </tbody>
           </table>
+          <strong>target_type</strong>
+          <table class="table table-sm table-bordered text-center">
+            <thead class="thead-dark">
+              <tr>
+                <th>Name</th>
+                <th>Value</th>
+                <th>target_param1</th>
+                <th>target_param2</th>
+                <th>target_param3</th>
+                <th>target_x</th>
+                <th>target_y</th>
+                <th>target_z</th>
+                <th>target_o</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SMART_TARGET_NONE<pre>None.</pre></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_SELF<pre>Self cast.</pre></td>
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_VICTIM<pre>Our current target. (ie: highest aggro)</pre></td>
+                <td>2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_HOSTILE_SECOND_AGGRO<pre>Second highest aggro.</pre></td>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_HOSTILE_LAST_AGGRO<pre>Dead last on aggro.</pre></td>
+                <td>4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_HOSTILE_RANDOM<pre>Just any random target on our threat list.</pre></td>
+                <td>5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_HOSTILE_RANDOM_NOT_TOP<pre>Any random target except top threat.</pre></td>
+                <td>6</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_ACTION_INVOKER<pre>Unit who caused this Event to occur.</pre></td>
+                <td>7</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_POSITION<pre>Use xyz from event params.</pre></td>
+                <td>8</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>x</td>
+                <td>y</td>
+                <td>z</td>
+                <td>o</td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_CREATURE_RANGE<pre>(Random?) creature with specified ID within specified range.</pre></td>
+                <td>9</td>
+                <td>creatureEntry<pre>(0 any)</pre></td>
+                <td>minDist</td>
+                <td>maxDist</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_CREATURE_GUID<pre>Creature with specified GUID.</pre></td>
+                <td>10</td>
+                <td>guid</td>
+                <td>entry</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_CREATURE_DISTANCE<pre>Creature with specified ID within distance. (Different from #9?)</pre></td>
+                <td>11</td>
+                <td>creatureEntry<pre>(0 any)</pre></td>
+                <td>maxDist</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_STORED<pre>Uses pre-stored target(list)</pre></td>
+                <td>12</td>
+                <td>id</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_GAMEOBJECT_RANGE<pre>(Random?) object with specified ID within specified range.</pre></td>
+                <td>13</td>
+                <td>goEntry<pre>(0 any)</pre></td>
+                <td>minDist</td>
+                <td>maxDist</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_GAMEOBJECT_GUID<pre>Object with specified GUID.</pre></td>
+                <td>14</td>
+                <td>guid</td>
+                <td>entry</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_GAMEOBJECT_DISTANCE<pre>Object with specified ID within distance. (Different from #13?)</pre></td>
+                <td>15</td>
+                <td>goEntry<pre>(0 any)</pre></td>
+                <td>maxDist</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_INVOKER_PARTY<pre>Invoker's party members</pre></td>
+                <td>16</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_PLAYER_RANGE<pre>(Random?) player within specified range.</pre></td>
+                <td>17</td>
+                <td>minDist</td>
+                <td>maxDist</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_PLAYER_DISTANCE<pre>(Random?) player within specified distance. (Different from #17?)</pre></td>
+                <td>18</td>
+                <td>maxDist</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_CLOSEST_CREATURE<pre>Closest creature with specified ID within specified range.</pre></td>
+                <td>19</td>
+                <td>creatureEntry<pre>(0 any)</pre></td>
+                <td>maxDist<pre>(Can be from 0-100 yards)</pre></td>
+                <td>dead? (0/1)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_CLOSEST_GAMEOBJECT<pre>Closest object with specified ID within specified range.</pre></td>
+                <td>20</td>
+                <td>goEntry<pre>(0 any)</pre></td>
+                <td>maxDist<pre>(Can be from 0-100 yards)</pre></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_CLOSEST_PLAYER<pre>Closest player within specified range.</pre></td>
+                <td>21</td>
+                <td>maxDist</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_ACTION_INVOKER_VEHICLE<pre>Unit's vehicle who caused this Event to occur</pre></td>
+                <td>22</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_OWNER_OR_SUMMONER<pre>Unit's owner or summoner</pre></td>
+                <td>23</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_THREAT_LIST<pre>All units on creature's threat list</pre></td>
+                <td>24</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_CLOSEST_ENEMY<pre>Any attackable target (creature or player) within maxDist</pre></td>
+                <td>25</td>
+                <td>maxDist</td>
+                <td>playerOnly (0/1)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SMART_TARGET_CLOSEST_FRIENDLY<pre>Any friendly unit (creature, player or pet) within maxDist</pre></td>
+                <td>26</td>
+                <td>maxDist</td>
+                <td>playerOnly (0/1)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
