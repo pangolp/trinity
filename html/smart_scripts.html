@@ -1578,9 +1578,19 @@
               </tbody>
             </table>
           </div> <!-- table-responsive -->
-        </div>
-      </div>
-    </div>
+          <strong>Comment</strong>
+          <p>Commenting on SAI uses a template which is the following: (with an example)</p>
+          <ul>
+            <li>"Creature name - Event - Action"</li>
+            <li>"Minion of Gurok - On spawn - Set Random Movement"</li>
+            <li>event_type - action_type - target_type</li>
+          </ul>
+          <span>UPDATE `creature_template` SET `AIName`='SmartAI' WHERE `entry`=y;<pre>Para npc o creature / criatura</pre></span>
+          <span>UPDATE `gameobject_template` SET `AIName`='SmartGameObjectAI' WHERE `entry`=y;<pre>Para object o objetos</pre></span>
+          <span>INSERT INTO `areatrigger_scripts` (`entry`, `ScriptName`) VALUES(y,'SmartTrigger');<pre>Para areatrigger</pre></span>
+        </div> <!-- col-md-12 -->
+      </div> <!-- row -->
+    </div> <!-- container -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
