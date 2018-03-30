@@ -328,8 +328,8 @@
           <strong id="entryorguid">entryorguid</strong>
           <a href="#top">Subir</a>
           <ul>
-            <li>EntryOrGuid > 0: entry of the creature / game object / etc.</li>
-            <li>EntryOrGuid < 0: guid of the creature / game object / etc.</li>
+            <li>EntryOrGuid mayor 0: entry of the creature / game object / etc.</li>
+            <li>EntryOrGuid menor 0: guid of the creature / game object / etc.</li>
             <li>Depends on source_type.</li>
           </ul>
           <strong id="source_type">source_type</strong>
@@ -392,7 +392,7 @@
           <strong id="id">Id</strong>
           <a href="#top">Subir</a>
           <ul>
-            <li>Incremental id bound to each entryorguid & source_type (0, 1, 2, ...).</li>
+            <li>Incremental id bound to each entryorguid and source_type (0, 1, 2, ...).</li>
           </ul>
           <strong id="link">link</strong>
           <a href="#top">Subir</a>
@@ -1936,9 +1936,9 @@
             <li>"Minion of Gurok - On spawn - Set Random Movement"</li>
             <li>event_type - action_type - target_type</li>
           </ul>
-          <span>UPDATE `creature_template` SET `AIName`='SmartAI' WHERE `entry`=y;<pre>Para npc o creature / criatura</pre></span>
-          <span>UPDATE `gameobject_template` SET `AIName`='SmartGameObjectAI' WHERE `entry`=y;<pre>Para object o objetos</pre></span>
-          <span>INSERT INTO `areatrigger_scripts` (`entry`, `ScriptName`) VALUES(y,'SmartTrigger');<pre>Para areatrigger</pre></span>
+          <span>UPDATE `creature_template` SET `AIName`='SmartAI' WHERE `entry`=y;</span>
+          <span>UPDATE `gameobject_template` SET `AIName`='SmartGameObjectAI' WHERE `entry`=y;</span>
+          <span>INSERT INTO `areatrigger_scripts` (`entry`, `ScriptName`) VALUES(y,'SmartTrigger');</span>
           <strong id="cast_flags">Cast Flags</strong>
           <a href="#top">Subir</a>
           <div class="table-responsive">
