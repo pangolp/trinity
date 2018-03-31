@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -11,7 +11,7 @@
   <title>Smart Scripts - Cataclismo</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
           <h1 class="text-center">Smart Scripts</h1>
@@ -86,7 +86,7 @@
                   <td></td>
                 </tr>
                 <tr>
-                  <td><a href="">event_phase_mask</a></td>
+                  <td><a href="#event_phase_mask">event_phase_mask</a></td>
                   <td>tinyint(3)</td>
                   <td>unsigned</td>
                   <td></td>
@@ -96,7 +96,7 @@
                   <td></td>
                 </tr>
                 <tr>
-                  <td><a href="">event_chance</a></td>
+                  <td><a href="#event_chance">event_chance</a></td>
                   <td>tinyint(3)</td>
                   <td>unsigned</td>
                   <td></td>
@@ -106,7 +106,7 @@
                   <td></td>
                 </tr>
                 <tr>
-                  <td><a href="">event_flags</a></td>
+                  <td><a href="#event_flags">event_flags</a></td>
                   <td>tinyint(3)</td>
                   <td>unsigned</td>
                   <td></td>
@@ -495,7 +495,7 @@
             <li>Example: If we want an event to only be able to occure in phase 1 and 4, <strong>event_phase_mask</strong> = 1+8 = 9</li>
             <li>(Inverse of EAI: event_inverse_phase_mask).</li>
           </ul>
-          <strong>event_chance</strong>
+          <strong id="event_chance">event_chance</strong>
           <ul>
             <li>Probability of the event to occur, in percentage;</li>
             <li>0-100%.</li>
@@ -1441,10 +1441,10 @@
                   <td>Change Threat Percentage for Single Target</td>
                 </tr>
                 <tr>
-                  <td>SMART_ACTION_THREAT_ALL_PCT 14</td>
+                  <td>SMART_ACTION_THREAT_ALL_PCT</td>
+                  <td>14</td>
                   <td>Threat% inc</td>
                   <td>Threat% dec</td>
-                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -1516,97 +1516,335 @@
                   <td></td>
                   <td>Stop or Continue Automatic Attack.</td>
                 </tr>
-                <!--<tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr> -->
+                <tr>
+                  <td>SMART_ACTION_ALLOW_COMBAT_MOVEMENT</td>
+                  <td>21</td>
+                  <td>AllowCombatMovement<pre>(0 = Stop combat based movement, anything else continue attacking)</pre></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Allow or Disable Combat Movement</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_SET_EVENT_PHASE</td>
+                  <td>22</td>
+                  <td>smart_scripts.event_phase_mask</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_INC_EVENT_PHASE</td>
+                  <td>23</td>
+                  <td>Increment</td>
+                  <td>Decrement</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Set param1 OR param2 (not both). Value 0 has no effect.</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_EVADE</td>
+                  <td>24</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Evade Incoming Attack</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_FLEE_FOR_ASSIST</td>
+                  <td>25</td>
+                  <td>0/1 (If you want the fleeing NPC to say attempts to flee text on flee, use 1 on param1. For no message use 0.)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>If you want the fleeing NPC to say '%s attempts to run away in fear' on flee, use 1 on param1. 0 for no message.</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_CALL_GROUPEVENTHAPPENS</td>
+                  <td>26</td>
+                  <td>QuestID</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_CALL_CASTEDCREATUREORGO</td>
+                  <td>27</td>
+                  <td>Creature_template.entry</td>
+                  <td>SpellId</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_REMOVEAURASFROMSPELL</td>
+                  <td>28</td>
+                  <td>Spellid</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>0 removes all auras</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_FOLLOW 29</td>
+                  <td>Distance (0 = Default value)</td>
+                  <td>Angle (0 = Default value)</td>
+                  <td>End creature_template.entry</td>
+                  <td>credit</td>
+                  <td>creditType (0monsterkill, 1event)</td>
+                  <td></td>
+                  <td>Follow Target</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_RANDOM_PHASE</td>
+                  <td>30</td>
+                  <td>smart_scripts.event_phase_mask1</td>
+                  <td>smart_scripts.event_phase_mask2</td>
+                  <td>smart_scripts.event_phase_mask3</td>
+                  <td>smart_scripts.event_phase_mask4</td>
+                  <td>smart_scripts.event_phase_mask5</td>
+                  <td>smart_scripts.event_phase_mask6</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_RANDOM_PHASE_RANGE</td>
+                  <td>31</td>
+                  <td>smart_scripts.event_phase_mask minimum</td>
+                  <td>smart_scripts.event_phase_mask maximum</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_RESET_GOBJECT</td>
+                  <td>32</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Reset Gameobject</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_CALL_KILLEDMONSTER</td>
+                  <td>33</td>
+                  <td>Creature_template.entry</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>This is the ID from quest_template.RequiredNpcOrGo</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_SET_INST_DATA</td>
+                  <td>34</td>
+                  <td>Field</td>
+                  <td>Data</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Set Instance Data</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_SET_INST_DATA64</td>
+                  <td>35</td>
+                  <td>Field</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Set Instance Data uint64</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_UPDATE_TEMPLATE</td>
+                  <td>36</td>
+                  <td>Creature_template.entry</td>
+                  <td>Team (updates creature_template to given entry)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_DIE</td>
+                  <td>37</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Kill Target</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_SET_IN_COMBAT_WITH_ZONE</td>
+                  <td>38</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_CALL_FOR_HELP</td>
+                  <td>39</td>
+                  <td>Radius in yards that other creatures must be to acknowledge the cry for help</td>
+                  <td>0/1 (say calls for help text)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>If you want the NPC to say '%s calls for help!'. Use 1 on param1, 0 for no message.</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_SET_SHEATH</td>
+                  <td>40</td>
+                  <td>Sheath (0-unarmed, 1-melee, 2-ranged)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_FORCE_DESPAWN</td>
+                  <td>41</td>
+                  <td>timer</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Despawn Target after param1 Milliseconds</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_SET_INVINCIBILITY_HP_LEVEL</td>
+                  <td>42</td>
+                  <td>flat hp value</td>
+                  <td>percent hp value</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>If you use both params, only percent will be used.</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_MOUNT_TO_ENTRY_OR_MODEL</td>
+                  <td>43</td>
+                  <td>Creature_template.entry</td>
+                  <td>Creature_template.modelID</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Mount to Creature Entry (param1) OR Mount to Creature Display (param2) Or both = 0 for Unmount</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_SET_INGAME_PHASE_MASK</td>
+                  <td>44</td>
+                  <td>creature.phasemask</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_SET_DATA</td>
+                  <td>45</td>
+                  <td>Field</td>
+                  <td>Data</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Set Data For Target, can be used with SMART_EVENT_DATA_SET</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_MOVE_FORWARD</td>
+                  <td>46</td>
+                  <td>Distance in yards</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Sends creature forward.</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_SET_VISIBILITY</td>
+                  <td>47</td>
+                  <td>0/1</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Makes creature Visible = 1  or  Invisible = 0</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_SET_ACTIVE</td>
+                  <td>48</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_ATTACK_START</td>
+                  <td>49</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Allows basic melee swings to creature.</td>
+                </tr>
+                <tr>
+                  <td>SMART_ACTION_SUMMON_GO</td>
+                  <td>50</td>
+                  <td>Gameobject_template.entry</td>
+                  <td>DespawnTime in seconds</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Spawns Gameobject, use target_type to set spawn position.</td>
+                </tr>
               </tbody>
             </table>
           </div>
